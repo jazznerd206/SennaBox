@@ -1,0 +1,28 @@
+{
+  "name": "SennaBox",
+  "version": "1.0.0",
+  "description": "Sennacherib, King of the Assyrians, has led his last campaign of war, conquering Babylon and bringing riches to his kingdom. He turned his gaze inward.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon server/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jazznerd206/SennaBox.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jazznerd206/SennaBox/issues"
+  },
+  "homepage": "https://github.com/jazznerd206/SennaBox#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "path": "^0.12.7"
+  }
+}
