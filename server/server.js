@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require('path');
 const cookieParser = require('cookie-parser');
+const customAuthMiddleware = require('./middleware/customAuthMid');
 let PORT = process.env.PORT || 8080;
 let app = express();
 
@@ -11,6 +12,11 @@ require('dotenv').config();
 // Parse application body as JSON
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+// use the cookie-parser to help with auth token, 
+// it must come before the customAuthMiddleware
+app.use(cookieParser());
+app.use(customAuthMiddleware);
 
 
 // add routes module
