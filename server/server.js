@@ -1,13 +1,11 @@
 const express = require("express");
 const path = require('path');
+const cookieParser = require('cookie-parser');
 let PORT = process.env.PORT || 8080;
 let app = express();
 
 // .env config
 require('dotenv').config();
-console.log('===========================================')
-console.log(process.env.SUPER_SECRET)
-console.log('===========================================')
 
 // Express middleware
 // Parse application body as JSON
