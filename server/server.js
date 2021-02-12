@@ -3,6 +3,12 @@ const path = require('path');
 let PORT = process.env.PORT || 8080;
 let app = express();
 
+// .env config
+require('dotenv').config();
+console.log('===========================================')
+console.log(process.env.SUPER_SECRET)
+console.log('===========================================')
+
 // Express middleware
 // Parse application body as JSON
 app.use(express.urlencoded({ extended: true }));
@@ -19,10 +25,16 @@ app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "./html/index.html"));
 });
 
-app.listen(PORT, function() {
+const db = require('./models');
+const syncOptions = { force: false };
+
+// Starting the server, syncing our models ------------------------------------/
+db.sequelize.sync(syncOptions).then(function() {
+  app.listen(PORT, function() {
     console.log(
       "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
       PORT,
       PORT
     );
-});
+  });
+}).catch(err => console.log(err));
