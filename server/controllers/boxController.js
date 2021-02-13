@@ -1,6 +1,8 @@
 module.exports = {
     findAll: (req, res) => {
         console.log('box find all route')
+        let randNum = (Math.random() * 100).toFixed(2);
+        res.send(randNum);
     },
     create: (req, res) => {
         console.log('box create route ', req.body)
