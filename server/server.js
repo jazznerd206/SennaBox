@@ -13,6 +13,9 @@ require('dotenv').config();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// serve static files (js, css, images)
+app.use(express.static(__dirname + '/public'));
+
 // use the cookie-parser to help with auth token, 
 // it must come before the customAuthMiddleware
 app.use(cookieParser());
@@ -26,7 +29,7 @@ const routes = require("./routes");
 app.use(routes);
 
 app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "./html/index.html"));
+    res.sendFile(path.join(__dirname, "./assets/index.html"));
 });
 
 const db = require('./models');
