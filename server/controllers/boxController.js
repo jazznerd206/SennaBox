@@ -1,3 +1,5 @@
+let rpio = require('rpio');
+
 module.exports = {
     findAll: (req, res) => {
         console.log('box find all route')
@@ -8,7 +10,20 @@ module.exports = {
         console.log('box create route ', req.body)
     },
     read: (req, res) => {
-        console.log('box read route ', req.params.id)
+        // rpio.open(15, rpio.INPUT);
+        // res.send('Pin 15 is currently ' + (rpio.read(15) ? 'high' : 'low'));
+        // rpio.open(16, rpio.OUTPUT, rpio.LOW);
+        // for (var i = 0; i < 5; i++) {
+        //     /* On for 1 second */
+        //     rpio.write(16, rpio.HIGH);
+        //     rpio.sleep(1);
+            
+        //     console.log(rpio.read(16))
+        //     /* Off for half a second (500ms) */
+        //     rpio.write(16, rpio.LOW);
+        //     rpio.msleep(500);
+        //     console.log(rpio.read(16))
+        // }
     },
     update: (req, res) => {
         console.log('box update route ', req.params.id, req.body)

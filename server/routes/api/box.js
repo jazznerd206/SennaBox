@@ -7,8 +7,11 @@ router.route("/")
   .get(boxController.findAll)
   .post(boxController.create)
 
-router.route("/:boxID")
+router.route("/read")
   .get(boxController.read)
+
+router.route("/:boxID")
+  // .get(boxController.read)
   .post(boxController.update)
   .delete(boxController.destroy)
 
