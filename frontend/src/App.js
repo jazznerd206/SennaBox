@@ -1,8 +1,14 @@
-import React from 'react'
+import React from 'react';
+import Nav from './components/Nav/Nav';
+import Home from './pages/Home';
+import './App.css';
 
 function App() {
     return (
-        <h1>SennaBox</h1>
+        <>
+            <Nav />
+            <Home />
+        </>
     )
 }
 
