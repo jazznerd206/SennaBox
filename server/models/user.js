@@ -20,16 +20,19 @@ module.exports = (sequelize, DataTypes) => {
       User.hasMany(models.AuthToken);
     };
 
+    User.associate = function(models) {
+      User.hasMany(models.Box);
+    };
+
     // This is a class method, it is not called on an individual
     // user object, but rather the class as a whole.
-    // e.g. User.authenticate('user1', 'password1234')
     User.authenticate = async function(username, password) {
 
       const user = await User.findOne({ where: { username } });
 
       // bcrypt is a one-way hashing algorithm that allows us to 
       // store strings on the database rather than the raw
-      // passwords. Check out the docs for more detail
+      // passwords
       if (bcrypt.compareSync(password, user.password)) {
         return user.authorize();
       }
@@ -38,8 +41,7 @@ module.exports = (sequelize, DataTypes) => {
     }
 
     // in order to define an instance method, we have to access
-    // the User model prototype. This can be found in the
-    // sequelize documentation
+    // the User model prototype.
     User.prototype.authorize = async function () {
       const { AuthToken } = sequelize.models;
       const user = this
