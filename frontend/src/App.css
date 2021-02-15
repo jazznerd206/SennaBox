@@ -1,7 +1,36 @@
-html, body {
+html {
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     padding: 0;
     margin: 0;
-    background: mediumaquamarine;
+    background: black;
+    color: chartreuse;
+    font-family: monospace;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-evenly;
+}
+
+body {
+    width: 100% - 2px;
+    height: 100%;
+    padding: 0;
+    margin: 50px 50px;
+    border: 1px solid chartreuse;
+    position: relative;
+}
+
+.App {
+    width: 100%;
+    height: auto;
+    padding: auto auto;
+    margin: auto auto;
+    /* box-shadow: 0 0 10px chartreuse; */
+}
+
+.header h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }

@@ -1,15 +1,15 @@
 import React from 'react';
-import Nav from './components/Nav/Nav';
-import Home from './pages/Home';
+// import Header from './components/Header/Header';
 import './App.css';
 
 function App() {
     console.log('app')
     return (
-        <>
-            <Nav />
-            <Home />
-        </>
+        <div className="App">
+            <div className="header">
+                <h1>SennaBox</h1>
+            </div>
+        </div>
     )
 }
 
