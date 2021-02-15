@@ -1,4 +1,4 @@
-let rpio = require('rpio');
+// let rpio = require('rpio');
 
 module.exports = {
     findAll: (req, res) => {

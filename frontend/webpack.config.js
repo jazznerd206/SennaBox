@@ -9,7 +9,12 @@ module.exports = {
     },
     "devtool": "source-map",
     "devServer": {
-        hot: true
+        hot: true,
+        historyApiFallback: true,
+        port: 3000,
+        proxy: {
+            "/api": "http://localhost:5000"
+    }
     },
     "module": {
         "rules": [

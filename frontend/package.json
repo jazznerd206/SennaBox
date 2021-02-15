@@ -8,6 +8,7 @@
     "build": "webpack",
     "start": "npx webpack serve --mode development --open --hot"
   },
+  "proxy": "http://localhost:8080",
   "keywords": [],
   "author": "",
   "license": "ISC",

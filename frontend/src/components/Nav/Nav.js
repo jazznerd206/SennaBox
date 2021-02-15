@@ -6,7 +6,7 @@ function Nav() {
     return (
         <div>
             <header className="header">
-                <a href="" className="logo">CSS Nav</a>
+                <a href="" className="logo">CSS Navigation</a>
                 <input className="menu-btn" type="checkbox" id="menu-btn" />
                 <label className="menu-icon" htmlFor="menu-btn"><span className="navicon"></span></label>
                 <ul className="menu">
