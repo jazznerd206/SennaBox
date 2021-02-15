@@ -1,0 +1,62 @@
+.header {
+    padding: 25px 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.header .title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.header .title h1 {
+    letter-spacing: .1em;
+    font-variant: small-caps;
+    text-shadow: 2px 2px chartreuse;
+    font-size: 3em;
+}
+
+.header .active-boxes h3 {
+    font-style: italic;
+    text-decoration: underline chartreuse;
+}
+
+.header .active-boxes .active-box {
+    border: .5px solid chartreuse;
+    padding: 5px 10px;
+    margin: 5px 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.header .active-boxes .active-box:hover {
+    background-color: chartreuse;
+    color: black;
+}
+
+.header .active-boxes .active-box:hover > .image {
+    background-color: black;
+}
+
+.header .active-boxes .active-box .image {
+    height: 50px;
+    width: 50px;
+    background-color: chartreuse;
+}
+
+.header .active-boxes .active-box button {
+    width: auto;
+    background-color: black;
+    border: 1px solid chartreuse;
+    color: chartreuse;
+}
+
+.header .active-boxes .active-box button:hover {
+    background-color: chartreuse;
+    color: black;
+}

@@ -1,0 +1,12 @@
+.login-wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+.login-wrapper .login-slide {
+    padding: 5em 5em;
+    border: 1px solid chartreuse;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
