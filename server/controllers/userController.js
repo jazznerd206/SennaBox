@@ -4,10 +4,12 @@ const bcrypt = require('bcrypt');
 module.exports = {
     findAll: (req, res) => {
         models.User.findAll()
-            .then(users => {
+        .then(users => {
+                console.log("find all")
                 res.send(users);
               })
             .catch(err => {
+                console.log("find all")
                 res.status(500).send({
                     message:
                     err.message || 'Some error occurred while retrieving users'

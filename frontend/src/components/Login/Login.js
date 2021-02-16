@@ -9,6 +9,7 @@ function Login() {
     const [ name, setName ] = useState('');
     const [ password, setPassword ] = useState('');
     const [ checkPassword, setCheckPassword ] = useState('');
+    const [ msg, setMsg ] = useState('');
 
     const submitRegister = () => {
         const newUser = {
@@ -17,12 +18,25 @@ function Login() {
             password: password
         }
         console.log('newUser', newUser)
-        if ( !email || !name || !password) {
-            console.log('must provide email, name and password to register');
+        const passwordCheck = (password, checkPassword) => {
+            console.log('pwdchk ', password === checkPassword)
+            return password === checkPassword;
         }
-        API.registerUser(newUser)
-            .then(response => console.log(response.data))
-            .catch(error => console.log(error));
+        const paramCheck = (email, name, password) => {
+            if (!email || !name || !password) console.log('paramcheck ', false);
+            if (!email || !name || !password) return false;
+            return true;
+        }
+        if (paramCheck && passwordCheck) {
+            console.log('ready to create user');
+            API.registerUser(newUser)
+                .then(response => {
+                    setMsg('success', response)
+                })
+                .catch(error => {
+                    setMsg('error ', error)
+                })
+            }
     }
 
     if (form === 'login') {
@@ -46,6 +60,9 @@ function Login() {
                     <button
                         onClick={() => submitRegister()}
                     >Log In</button>
+                    {msg !== "" ? 
+                        null : <spam>{msg}</spam>
+                    }
                 </div>
                 <div className="login-slide">
                     <button onClick={() => setForm('register')}>Sign Up</button>
@@ -83,13 +100,13 @@ function Login() {
                     ></input>
                     <label>Check Password:</label>
                     <input
-                        type="checkPassword"
+                        type="password"
                         value={checkPassword}
                         id="checkPassword"
                         onChange={(e) => setCheckPassword(e.target.value)}
                     ></input>
                     <button
-                        onClick={() => console.log(`submit register for: ${name}, ${password}, ${checkPassword}`)}
+                        onClick={() => submitRegister()}
                     >Register</button>
                 </div>
             </div>
