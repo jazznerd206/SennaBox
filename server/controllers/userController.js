@@ -16,7 +16,8 @@ module.exports = {
     },
     findOne: (req, res) => {
         models.User.findOne(
-            { where: {
+            { 
+                where: {
                 email: req.body.email
             }
         })
