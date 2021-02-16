@@ -7,21 +7,38 @@ export default {
         console.log('userObj', userObj)
         return new Promise ((resolve, reject) => {
             axios.post("/api/user", userObj)
-            .then(response => {
-                if (response.data) {
-                    console.log(JSON.stringify(response.data));
-                    resolve(response.data);
-                } else {
-                    console.log('Sign-up error');
-                }
-            }).catch(error => {
-                console.log('Sign up server error: ');
-                reject(Error('find user sign up error: ' + JSON.stringify(error)))
-            });
+                .then(response => {
+                    if (response.data) {
+                        console.log(JSON.stringify(response.data));
+                        resolve(response.data);
+                    } else {
+                        console.log('Sign-up error');
+                    }
+                }).catch(error => {
+                    console.log('Sign up server error: ');
+                    reject(Error('find user sign up error: ' + JSON.stringify(error)))
+                });
+        })
+    },
+    loginUser: userObj => {
+        console.log('axios post login user')
+        console.log('userObj', userObj)
+        return new Promise((resolve, reject) => {
+            axios.post("/api/user/login", userObj)
+                .then(response => {
+                    if (response) {
+                        console.log('where am i ', response);
+                        resolve(response.data);
+                    } else {
+                        console.log('Sign-up error');
+                    }
+                }).catch(error => {
+                    reject(Error('find user sign up error: ' + JSON.stringify(error)))
+                });
         })
     },
     findAll: () => {
-        console.log('find all route')
+        console.log('axios get find all route')
         return new Promise((resolve, reject) => {
             axios.get(`/api/user`)
                 .then(response => {

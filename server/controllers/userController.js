@@ -61,7 +61,7 @@ module.exports = {
                 
                     // send back the new user and auth token to the
                     // client { user, authToken }
-                    return res.json(user);
+                    return res.json(data);
                 
                     } catch(err) {
                         return res.status(400).send(err);
@@ -100,10 +100,11 @@ module.exports = {
             );
         }
 
+        console.log('username', username)
+        console.log('password', password)
+
         try {
             let user = models.User.authenticate(username, password)
-
-            user = user.authorize();
 
             return res.json(user);
 

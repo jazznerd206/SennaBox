@@ -39,6 +39,29 @@ function Login() {
             }
     }
 
+    const submitLogin = () => {
+        const user = {
+            username: name,
+            password: password
+        };
+        console.log('user', user);
+        const paramCheck = (name, password) => {
+            if (!name || !password) console.log('paramcheck ', false);
+            if (!name || !password) return false;
+            return true;
+        }
+        if (paramCheck) {
+            API.loginUser(user)
+                .then(response => {
+                    console.log('response', response);
+                })
+                .catch(error => {
+                    console.log('error', error);
+                })
+        }
+
+    }
+
     if (form === 'login') {
         return (
             <div className="login-wrapper">
@@ -58,7 +81,7 @@ function Login() {
                         onChange={(e) => setPassword(e.target.value)}
                     ></input>
                     <button
-                        onClick={() => submitRegister()}
+                        onClick={() => submitLogin()}
                     >Log In</button>
                     {msg !== "" ? 
                         null : <spam>{msg}</spam>
