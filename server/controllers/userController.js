@@ -89,7 +89,7 @@ module.exports = {
             console.log(error);
         })
     },
-    login: (req, res) => {
+    login: async (req, res) => {
         const { username, password } = req.body;
 
         // if the username / password is missing, we use status code 400
@@ -100,15 +100,16 @@ module.exports = {
             );
         }
 
-        console.log('username', username)
-        console.log('password', password)
+        // console.log('username', username)
+        // console.log('password', password)
 
         try {
-            let user = models.User.authenticate(username, password)
-
+            let user = await models.User.authenticate(username, password)
+            console.log('user in try block', user)
             return res.json(user);
 
         } catch (err) {
+            console.log('invalid username or password')
             return res.status(400).send('invalid username or password');
         }
     },

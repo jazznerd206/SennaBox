@@ -21,13 +21,13 @@ export default {
         })
     },
     loginUser: userObj => {
-        console.log('axios post login user')
-        console.log('userObj', userObj)
+        // console.log('axios post login user')
+        // console.log('userObj', userObj)
         return new Promise((resolve, reject) => {
             axios.post("/api/user/login", userObj)
                 .then(response => {
                     if (response) {
-                        console.log('where am i ', response);
+                        console.log('where am i ', response.data);
                         resolve(response.data);
                     } else {
                         console.log('Sign-up error');

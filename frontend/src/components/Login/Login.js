@@ -44,7 +44,7 @@ function Login() {
             username: name,
             password: password
         };
-        console.log('user', user);
+        // console.log('user', user);
         const paramCheck = (name, password) => {
             if (!name || !password) console.log('paramcheck ', false);
             if (!name || !password) return false;

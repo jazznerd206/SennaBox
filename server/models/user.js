@@ -37,7 +37,7 @@ module.exports = (sequelize, DataTypes) => {
       // store strings on the database rather than the raw
       // passwords
       if (bcrypt.compare(password, user.password)) {
-        return user;
+        return user.authorize();
       }
 
       throw new Error('invalid password');
@@ -58,8 +58,8 @@ module.exports = (sequelize, DataTypes) => {
 
       // addAuthToken is a generated method provided by
       // sequelize which is made for any 'hasMany' relationships
-      // await user.add(authToken);
-
+      await user.set(authToken);
+      // console.log( user, authToken )
       return { user, authToken }
     };
 
