@@ -8,19 +8,19 @@ import './App.css';
 
 function App() {
 
-    const [ loading, setLoading ] = useState(false)
-    const [ user, setUser ] = useState({})
+    const [ loading, setLoading ] = useState(false);
+    const [ user, setUser ] = useState('');
     const history = useHistory();
 
     const fetchAuthCookie = () => {
         console.log('fetch auth cookie')
         const result = Cookies.get('auth');
         if (result === undefined) { 
-            console.log(`no user to log in`)
+            console.log(`no user to log in`);
             // setLoggedIn(false);
             setLoading(false);
         } else {
-            console.log(result);
+            console.log('result ', result);
             setLoading(false);
             setUser(result);
             history.push('/dashboard');
@@ -32,7 +32,7 @@ function App() {
         fetchAuthCookie();
     }, [])
 
-    console.log(loading)
+    // console.log(loading)
 
 
     if (loading === true) {

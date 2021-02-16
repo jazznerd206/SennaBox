@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import API from '../../utils/API';
 import Cookies from 'js-cookie';
 import './style.css';
 
 function Login() {
 
+    const history = useHistory();
     const [ form, setForm ] = useState('login');
     const [ email, setEmail ] = useState('');
     const [ name, setName ] = useState('');
@@ -51,15 +53,16 @@ function Login() {
             return true;
         }
         if (paramCheck) {
-            API.loginUser(user)
-                .then(response => {
+            let find = API.loginUser(user)
+            find.then(response => {
                     if (response.authToken.UserId === response.user.id) {
                         // console.log('this user exists and can log in', response);
                         Cookies.set('auth', `${response.user.id}:${response.authToken.token}`);
                         setName('');
                         setPassword('');
+                        history.push('/dashboard');
                     } else {
-                        console.log('nope')
+                        console.log('nope');
                     }
                 })
                 .catch(error => {

@@ -44,7 +44,10 @@ module.exports = (sequelize, DataTypes) => {
       // bcrypt is a one-way hashing algorithm that allows us to 
       // store strings on the database rather than the raw
       // passwords
-      if (bcrypt.compare(password, user.password)) {
+      console.log(password, user.password)
+      let compare = bcrypt.compareSync(password, user.password)
+      console.log('bcrypt.compare(password, user.password)', compare)
+      if (compare) {
         return user.authorize();
       }
 

@@ -109,12 +109,12 @@ module.exports = {
             );
         }
 
-        // console.log('username', username)
-        // console.log('password', password)
+        console.log('username', username)
+        console.log('password', password)
 
         try {
             let user = await models.User.authenticate(username, password)
-            console.log('user in try block', user)
+            // console.log('user in try block', user)
             return res.json(user);
 
         } catch (err) {
