@@ -3,7 +3,13 @@ const bcrypt = require('bcrypt');
 
 module.exports = {
     findAll: (req, res) => {
-        models.User.findAll()
+        models.User.findAll(
+            {
+                include: [{
+                    all: true,
+                    nested: true
+                  }]
+                })
         .then(users => {
                 console.log("find all")
                 res.send(users);
@@ -18,11 +24,14 @@ module.exports = {
     },
     findOne: (req, res) => {
         models.User.findOne(
-            { 
+            {
                 where: {
-                email: req.body.email
-            }
-        })
+                    id: user.id
+                }, include: [{
+                    all: true,
+                    nested: true
+                  }]
+                })
         .then(user => {
             res.send(user)
         })

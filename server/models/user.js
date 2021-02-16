@@ -31,7 +31,15 @@ module.exports = (sequelize, DataTypes) => {
     User.authenticate = async function(username, password) {
 
 
-      const user = await User.findOne({ where: { username: username } });
+      const user = await User.findOne(
+            {
+                where: {
+                    username: username
+                }, include: [{
+                    all: true,
+                    nested: true
+                  }]
+                });
 
       // bcrypt is a one-way hashing algorithm that allows us to 
       // store strings on the database rather than the raw

@@ -27,7 +27,7 @@ export default {
             axios.post("/api/user/login", userObj)
                 .then(response => {
                     if (response) {
-                        console.log('where am i ', response.data);
+                        console.log('where am i ', response.data.user);
                         resolve(response.data);
                     } else {
                         console.log('Sign-up error');

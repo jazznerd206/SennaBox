@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import API from '../../utils/API';
+import Cookies from 'js-cookie';
 import './style.css';
 
 function Login() {
@@ -44,7 +45,6 @@ function Login() {
             username: name,
             password: password
         };
-        // console.log('user', user);
         const paramCheck = (name, password) => {
             if (!name || !password) console.log('paramcheck ', false);
             if (!name || !password) return false;
@@ -53,7 +53,14 @@ function Login() {
         if (paramCheck) {
             API.loginUser(user)
                 .then(response => {
-                    console.log('response', response);
+                    if (response.authToken.UserId === response.user.id) {
+                        // console.log('this user exists and can log in', response);
+                        Cookies.set('auth', `${response.user.id}:${response.authToken.token}`);
+                        setName('');
+                        setPassword('');
+                    } else {
+                        console.log('nope')
+                    }
                 })
                 .catch(error => {
                     console.log('error', error);
