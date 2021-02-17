@@ -27,10 +27,10 @@ export default {
             axios.post("/api/user/login", userObj)
                 .then(response => {
                     if (response) {
-                        console.log('where am i ', response.data.user);
+                        console.log('user response from login ', response.data);
                         resolve(response.data);
                     } else {
-                        console.log('Sign-up error');
+                        console.log('Login error');
                     }
                 }).catch(error => {
                     reject(Error('find user sign up error: ' + JSON.stringify(error)))

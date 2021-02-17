@@ -54,19 +54,22 @@ function Login() {
         }
         if (paramCheck) {
             let find = API.loginUser(user)
+            console.log('find', find)
             find.then(response => {
-                    if (response.authToken.UserId === response.user.id) {
+                    if (response.status === 400) {
+                        // console.log(response.message)
+                        setMsg(response.message);
+                    } else {
                         // console.log('this user exists and can log in', response);
                         Cookies.set('auth', `${response.user.id}:${response.authToken.token}`);
                         setName('');
                         setPassword('');
                         history.push('/dashboard');
-                    } else {
-                        console.log('nope');
                     }
                 })
                 .catch(error => {
                     console.log('error', error);
+                    throw error;
                 })
         }
 
@@ -93,8 +96,8 @@ function Login() {
                     <button
                         onClick={() => submitLogin()}
                     >Log In</button>
-                    {msg !== "" ? 
-                        null : <spam>{msg}</spam>
+                    {msg ? 
+                        <span className="error-message">{msg}</span> : null
                     }
                 </div>
                 <div className="login-slide">
@@ -141,6 +144,9 @@ function Login() {
                     <button
                         onClick={() => submitRegister()}
                     >Register</button>
+                    {msg ? 
+                        <span className="error-message">{msg}</span> : null
+                    }
                 </div>
             </div>
         )

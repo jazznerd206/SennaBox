@@ -104,9 +104,11 @@ module.exports = {
         // if the username / password is missing, we use status code 400
         // indicating a bad request was made and send back a message
         if (!username || !password) {
-            return res.status(400).send(
-            'Request missing username or password param'
-            );
+            const response = {
+                status: 400,
+                message: 'Please provide both name and password'
+            }
+            return res.json(response);
         }
 
         console.log('username', username)
@@ -119,7 +121,11 @@ module.exports = {
 
         } catch (err) {
             console.log('invalid username or password')
-            return res.status(400).send('invalid username or password');
+            const response = {
+                status: 400,
+                message: 'Invalid username or password'
+            }
+            return res.json(response);
         }
     },
     logout: (req, res) => {
