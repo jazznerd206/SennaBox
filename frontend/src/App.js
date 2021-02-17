@@ -30,7 +30,7 @@ function App() {
             let userFromCookie = await API.findOne(id);
             console.log('userFromCookie', userFromCookie)
             setLoading(false);
-            setUser(result);
+            setUser(userFromCookie);
             history.push('/dashboard');
         }
     }
