@@ -5,26 +5,25 @@ import Cookies from 'js-cookie';
 import { useHistory } from 'react-router-dom';
 
 
-// import PropTypes from 'prop-types';
-
 function Dashboard() {
 
     const history = useHistory();
     const user = useRecoilValue(userAtom)
 
-    // console.log(props)
 
     const logout = () => {
         console.log('logout ');
         Cookies.remove('auth');
         history.push('/');
     }
-    console.log(user)
-    
+
+    if (user.Boxes) {
+        console.log('user.Boxes.length', user.Boxes.length)
+    }
+
     return (
         <div>
-            <h1>dashboard</h1>
-            <p>{user.username}</p>
+            <h1>Welcome {user.username}</h1>
             <button onClick={() => logout()}>Logout</button>
         </div>
     )
