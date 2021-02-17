@@ -16,10 +16,12 @@ module.exports = {
               })
             .catch(err => {
                 console.log("find all")
-                res.status(500).send({
+                const response = {
+                    status: 500,
                     message:
                     err.message || 'Some error occurred while retrieving users'
-                });
+                }
+                res.json(response);
         });
     },
     findOne: (req, res) => {
@@ -36,26 +38,33 @@ module.exports = {
             res.send(user)
         })
         .catch(err => {
-            res.status(500).send({
-                message:
-                err.message || 'Some error occurred while retrieving user'
-            });
+            const response = {
+                status: 400,
+                message: 'Some error occurred while retrieving user'
+            }
+            res.json(response);
         })
     },
-    create: (req, res) => {
+    create: async (req, res) => {
         if(!req.body.username || !req.body.password) {
-            res.status(400).send({ error:true, message: 'Please provide name/pass' });
+            const response = {
+                status: 400,
+                message: 'All fields required'
+            }
+            res.json(response);
         }
         let hash = bcrypt.hashSync(req.body.password, 10);
         models.User.findOne( { where: { username: req.body.username }})
         .then(user => {
             if (user) {
                 console.log(`user found, choose a different name ${user}`)
-                return res.json({
+                const response = {
+                    status: 400,
                     success: false,
                     username: null,
-                    error: `Username ${req.body.username} has already been taken.`
-                })
+                    message: `Username ${req.body.username} has already been taken.`
+                }
+                return res.json(response)
             }
             else {
                 console.log(`no user found, ready to create`)
@@ -66,14 +75,19 @@ module.exports = {
                     );
                 
                     // data will be an object with the user and it's authToken
-                    let data = user.authorize();
+                    // let data = user.authenticate();
                 
                     // send back the new user and auth token to the
                     // client { user, authToken }
+                    console.log('data', data)
                     return res.json(data);
                 
-                    } catch(err) {
-                        return res.status(400).send(err);
+                    } 
+                catch(err) {
+                    return res.json({
+                        error: err,
+                        message: '400 status error here'
+                    });
                 }
                 
             }

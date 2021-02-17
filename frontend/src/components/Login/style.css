@@ -10,3 +10,19 @@
     flex-direction: column;
     justify-content: space-around;
 }
+
+.error-message {
+    position: absolute;
+    bottom: -50px;
+    animation: flash cubic-bezier(0.55, 0.055, 0.675, 0.19) .5s;
+}
+
+@keyframes flash {
+    from {
+      color: white;
+    }
+  
+    to {
+      color: chartreuse;
+    }
+  }

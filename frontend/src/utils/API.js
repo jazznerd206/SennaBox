@@ -8,15 +8,15 @@ export default {
         return new Promise ((resolve, reject) => {
             axios.post("/api/user", userObj)
                 .then(response => {
-                    if (response.data) {
-                        console.log(JSON.stringify(response.data));
+                    if (response) {
+                        console.log('user response from register ', response.data);
                         resolve(response.data);
                     } else {
                         console.log('Sign-up error');
                     }
                 }).catch(error => {
                     console.log('Sign up server error: ');
-                    reject(Error('find user sign up error: ' + JSON.stringify(error)))
+                    reject(Error('find user sign up error: ' + error))
                 });
         })
     },
@@ -33,7 +33,7 @@ export default {
                         console.log('Login error');
                     }
                 }).catch(error => {
-                    reject(Error('find user sign up error: ' + JSON.stringify(error)))
+                    reject(Error('find user sign up error: ' + error))
                 });
         })
     },

@@ -30,14 +30,20 @@ function Login() {
             if (!email || !name || !password) return false;
             return true;
         }
-        if (paramCheck && passwordCheck) {
+        if (!paramCheck) {
+            setMsg('All fields required')
+        } else if (!passwordCheck) {
+            setMsg('Passwords do not match')
+        }
+        else if (paramCheck && passwordCheck) {
             console.log('ready to create user');
             API.registerUser(newUser)
                 .then(response => {
-                    setMsg('success', response)
+                    console.log('response', response)
+                    setMsg(response.message);
                 })
                 .catch(error => {
-                    setMsg('error ', error)
+                    console.log('error', error)
                 })
             }
     }
@@ -101,7 +107,10 @@ function Login() {
                     }
                 </div>
                 <div className="login-slide">
-                    <button onClick={() => setForm('register')}>Sign Up</button>
+                    <button onClick={() => {
+                        setForm('register');
+                        setMsg('');    
+                    }}>Sign Up</button>
                 </div>
             </div>
         )
@@ -110,7 +119,10 @@ function Login() {
         return (
             <div className="login-wrapper">
                 <div className="login-slide">
-                    <button onClick={() => setForm('login')}>Register</button>
+                    <button onClick={() => {
+                        setForm('login');
+                        setMsg('');    
+                    }}>Sign In</button>
                 </div>
                 <div className="login-slide">
                     <label>Email:</label>
