@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
 
+/* GLOBAL STYLES */
 html {
     padding: 0;
     margin: 0;
@@ -26,6 +27,7 @@ body {
     height: 100vh;
 }
 
+
 button {
     width: auto;
     background-color: black;
@@ -36,4 +38,37 @@ button {
 button:hover {
     background-color: chartreuse;
     color: black;
+}
+
+.row {
+    padding: 10px 0px;
+    margin: 10px 0px;
+}
+
+/* DASHBOARD STYLES */
+.dashboard-wrapper {
+    margin: 25px 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.dashboard-wrapper > div:last-child {
+    flex: 1;
+}
+
+.dashboard-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.customize-box button {
+    font-size: 2em;
+}
+
+.active-box {
+    margin: 25px 25px;
+    border: 1px solid chartreuse;
 }

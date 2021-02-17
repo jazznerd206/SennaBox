@@ -22,9 +22,19 @@ function Dashboard() {
     }
 
     return (
-        <div>
-            <h1>Welcome {user.username}</h1>
-            <button onClick={() => logout()}>Logout</button>
+        <div className="dashboard-wrapper">
+            <div className="row dashboard-header">
+                <h1>Welcome {user.username}</h1>
+                <button onClick={() => logout()}>Logout</button>
+            </div>
+            <div className="row customize-box">
+                <button>Customize your Box</button>
+            </div>
+            <div className="row active-box">
+                <p>Name:</p>
+                <p>Age:</p>
+                <p>Last Watered:</p>
+            </div>
         </div>
     )
 }
