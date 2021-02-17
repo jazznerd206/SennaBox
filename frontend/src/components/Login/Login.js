@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useRecoilState } from 'recoil';
+import { userAtom } from '../../utils/UserAtom.js'
 import API from '../../utils/API';
 import Cookies from 'js-cookie';
 import './style.css';
@@ -7,6 +9,7 @@ import './style.css';
 function Login() {
 
     const history = useHistory();
+    let [ currentUser, setUser ] = useRecoilState(userAtom);
     const [ form, setForm ] = useState('login');
     const [ email, setEmail ] = useState('');
     const [ name, setName ] = useState('');
@@ -70,6 +73,8 @@ function Login() {
                         Cookies.set('auth', `${response.user.id}:${response.authToken.token}`);
                         setName('');
                         setPassword('');
+                        currentUser = response.user;
+                        setUser(currentUser);
                         history.push('/dashboard');
                     }
                 })

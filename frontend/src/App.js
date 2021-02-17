@@ -1,4 +1,8 @@
 import React, { useEffect, useState } from 'react';
+import { useRecoilState } from 'recoil';
+import { userAtom } from './utils/UserAtom.js'
+import API from './utils/API.js'
+// import { userAtom, select    UserAtom } from './utils/UserAtom';
 import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
 // import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
@@ -9,18 +13,22 @@ import './App.css';
 function App() {
 
     const [ loading, setLoading ] = useState(false);
-    const [ user, setUser ] = useState('');
+    const [ user, setUser ] = useRecoilState(userAtom);
     const history = useHistory();
 
-    const fetchAuthCookie = () => {
-        console.log('fetch auth cookie')
+    const fetchAuthCookie = async () => {
+        // console.log('fetch auth cookie')
         const result = Cookies.get('auth');
         if (result === undefined) { 
-            console.log(`no user to log in`);
+            // console.log(`no user to log in`);
             // setLoggedIn(false);
             setLoading(false);
+            setUser({});
         } else {
-            console.log('result ', result);
+            let [ id, authToken ] = result.split(':')
+            console.log(id, authToken);
+            let userFromCookie = await API.findOne(id);
+            console.log('userFromCookie', userFromCookie)
             setLoading(false);
             setUser(result);
             history.push('/dashboard');
@@ -31,8 +39,8 @@ function App() {
         setLoading(true)
         fetchAuthCookie();
     }, [])
-
-    // console.log(loading)
+    
+    // console.log('user', user)
 
 
     if (loading === true) {

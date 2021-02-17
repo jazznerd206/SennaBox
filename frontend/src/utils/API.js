@@ -55,4 +55,22 @@ export default {
                 })
         })
    },
+   findOne: (id) => {
+    console.log('axios get find all route')
+    return new Promise((resolve, reject) => {
+        axios.get(`/api/user/${id}`)
+            .then(response => {
+                // console.log(`response.data from finduser promise API ${JSON.stringify(response.data)}`)
+                if (response) {
+                    resolve(response.data)
+                }
+                else {
+                    console.log('find user error')
+                }
+            })
+            .catch(error => {
+                reject(Error('find user server error: ' + JSON.stringify(error)))
+            })
+    })
+},
 }

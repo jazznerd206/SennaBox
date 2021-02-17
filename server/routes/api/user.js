@@ -11,7 +11,7 @@ router.route("/login")
 router.route("/logout")
   .delete(userController.logout)
 
-router.route('/:userId')
+router.route('/:id')
   .get(userController.findOne)
   // .put(user.update_a_user)
   .delete(userController.destroy);

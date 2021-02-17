@@ -28,13 +28,14 @@ module.exports = {
         models.User.findOne(
             {
                 where: {
-                    id: user.id
+                    id: req.params.id
                 }, include: [{
                     all: true,
                     nested: true
                   }]
                 })
         .then(user => {
+            console.log('user', user)
             res.send(user)
         })
         .catch(err => {
