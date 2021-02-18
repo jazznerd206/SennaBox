@@ -1,5 +1,5 @@
 const models = require('../models'); // loads index.js
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 
 module.exports = {
     findAll: (req, res) => {

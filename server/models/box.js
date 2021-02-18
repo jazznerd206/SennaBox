@@ -15,7 +15,9 @@ module.exports = (sequelize, DataTypes) => {
         },
         plantType: {
             type: DataTypes.STRING,
-        }
-    })
+        },
+        // look for data code here?
+        // open gpio connection, query data pin, send results to file
+    })  
     return Box;
 }

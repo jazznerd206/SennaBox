@@ -7,6 +7,7 @@ let app = express();
 
 // .env config
 require('dotenv').config();
+require('./scripts/checkMoisture.js');
 
 // Express middleware
 // Parse application body as JSON

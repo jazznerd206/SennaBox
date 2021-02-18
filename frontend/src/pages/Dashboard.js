@@ -2,6 +2,7 @@ import React from 'react';
 import { useRecoilValue } from 'recoil';
 import { userAtom } from '../utils/UserAtom.js';
 import Cookies from 'js-cookie';
+import CreateBox from '../components/CreateBox/CreateBox';
 import { useHistory, Redirect } from 'react-router-dom';
 
 
@@ -31,13 +32,8 @@ function Dashboard() {
                 <h1>Welcome {user.username}</h1>
                 <button onClick={() => logout()}>Logout</button>
             </div>
-            <div className="row customize-box">
-                <button>Customize your Box</button>
-            </div>
-            <div className="row active-box">
-                <p>Name:</p>
-                <p>Age:</p>
-                <p>Last Watered:</p>
+            <div className="row vertical-align">
+                <CreateBox />
             </div>
         </div>
     )

@@ -48,6 +48,7 @@ button:hover {
 /* DASHBOARD STYLES */
 .dashboard-wrapper {
     margin: 25px 25px;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;

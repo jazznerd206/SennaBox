@@ -54,8 +54,8 @@ export default {
                     reject(Error('find user server error: ' + JSON.stringify(error)))
                 })
         })
-   },
-   findOne: (id) => {
+    },
+    findOne: (id) => {
     console.log('axios get find all route')
     return new Promise((resolve, reject) => {
         axios.get(`/api/user/${id}`)
@@ -71,6 +71,23 @@ export default {
             .catch(error => {
                 reject(Error('find user server error: ' + JSON.stringify(error)))
             })
-    })
-},
+        })
+    },
+    create: (type, obj) => {
+        console.log('obj', obj)
+        return new Promise ((resolve, reject) => {
+            axios.post(`/api/${type}`, obj)
+                .then(response => {
+                    if (response) {
+                        console.log('box response from register ', response.data);
+                        resolve(response.data);
+                    } else {
+                        console.log('box create error');
+                    }
+                }).catch(error => {
+                    console.log('box create server error: ' + error);
+                    reject(Error('box create server error: ' + error))
+                });
+        })
+    }
 }
