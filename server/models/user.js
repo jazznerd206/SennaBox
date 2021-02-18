@@ -25,12 +25,7 @@ module.exports = (sequelize, DataTypes) => {
     User.associate = function(models) {
       User.hasMany(models.Box);
     };
-
-    // This is a class method, it is not called on an individual
-    // user object, but rather the class as a whole.
     User.authenticate = async function(username, password) {
-
-
       const user = await User.findOne(
             {
                 where: {
@@ -40,48 +35,23 @@ module.exports = (sequelize, DataTypes) => {
                     nested: true
                   }]
                 });
-
-      // bcrypt is a one-way hashing algorithm that allows us to 
-      // store strings on the database rather than the raw
-      // passwords
-      console.log(password, user.password)
       let compare = bcrypt.compareSync(password, user.password)
       console.log('bcrypt.compareSync(password, user.password)', compare)
       if (compare) {
         return user.authorize();
       }
-
       throw new Error('invalid password');
     }
-
-    // in order to define an instance method, we have to access
-    // the User model prototype.
     User.prototype.authorize = async function () {
       const { AuthToken } = sequelize.models;
       const user = this
-
-      // create a new auth token associated to 'this' user
-      // by calling the AuthToken class method we created earlier
-      // and passing it the user id
       const authToken = await AuthToken.generate(this.id);
-
-      // console.log('authToken', authToken)
-
-      // addAuthToken is a generated method provided by
-      // sequelize which is made for any 'hasMany' relationships
       await user.set(authToken);
-      // console.log( user, authToken )
       return { user, authToken }
     };
-
-
     User.prototype.logout = async function (token) {
-
-      // destroy the auth token record that matches the passed token
       sequelize.models.AuthToken.destroy({ where: { token } });
     };
-
-
-
+    
     return User;
 };

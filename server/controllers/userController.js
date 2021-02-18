@@ -55,47 +55,28 @@ module.exports = {
             res.json(response);
         }
         let hash = bcrypt.hashSync(req.body.password, 10);
-        models.User.findOne( { where: { username: req.body.username }})
-        .then(user => {
-            if (user) {
-                console.log(`user found, choose a different name ${user}`)
-                const response = {
-                    status: 400,
-                    success: false,
-                    username: null,
-                    message: `Username ${req.body.username} has already been taken.`
-                }
-                return res.json(response)
-            }
-            else {
-                console.log(`no user found, ready to create`)
-                try {
-                    // create a new user with the password hash from bcrypt
-                    let user = models.User.create(
-                      Object.assign(req.body, { password: hash })
-                    );
-                
-                    // data will be an object with the user and it's authToken
-                    // let data = user.authenticate();
-                
-                    // send back the new user and auth token to the
-                    // client { user, authToken }
-                    console.log('data', data)
-                    return res.json(data);
-                
-                    } 
-                catch(err) {
-                    return res.json({
-                        error: err,
-                        message: '400 status error here'
-                    });
-                }
-                
-            }
-        })
-        .catch (err => {
-            console.log(err)
-        })
+        let findUser = await models.User.findOne( { where: { username: req.body.username }})
+        console.log('find', findUser)
+        if (findUser) {
+            res.json({
+                status: 400,
+                message: 'Username not available'
+            })
+        }
+        // create a new user with the password hash from bcrypt
+        let userHash = models.User.create(
+            Object.assign(req.body, { password: hash })
+        );
+        // data will be an object with the user and it's authToken
+        // let data = user.authenticate();
+        console.log('user', userHash)
+        // send back the new user and auth token to the
+        // client { user, authToken }
+        // console.log('data', data)
+        return res.json({
+            status: 200,
+            message: 'User created'
+        });
     },
     update: (req, res) => {
         // update not yet necessary

@@ -43,7 +43,12 @@ function Login() {
             API.registerUser(newUser)
                 .then(response => {
                     console.log('response', response)
+                    setName('');
+                    setEmail('');
+                    setPassword('');
+                    setCheckPassword('');
                     setMsg(response.message);
+                    setForm('login');
                 })
                 .catch(error => {
                     console.log('error', error)

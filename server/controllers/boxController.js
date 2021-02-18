@@ -8,6 +8,7 @@ module.exports = {
     },
     create: (req, res) => {
         console.log('box create route ', req.body)
+        
     },
     read: (req, res) => {
         // rpio.open(15, rpio.INPUT);

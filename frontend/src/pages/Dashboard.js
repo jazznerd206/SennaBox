@@ -2,7 +2,7 @@ import React from 'react';
 import { useRecoilValue } from 'recoil';
 import { userAtom } from '../utils/UserAtom.js';
 import Cookies from 'js-cookie';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Redirect } from 'react-router-dom';
 
 
 function Dashboard() {
@@ -21,6 +21,10 @@ function Dashboard() {
         console.log('user.Boxes.length', user.Boxes.length)
     }
 
+    if (!user.id) {
+        console.log('redirect')
+        return <Redirect to="/" />
+    }
     return (
         <div className="dashboard-wrapper">
             <div className="row dashboard-header">

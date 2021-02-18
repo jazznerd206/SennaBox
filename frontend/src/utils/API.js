@@ -15,8 +15,8 @@ export default {
                         console.log('Sign-up error');
                     }
                 }).catch(error => {
-                    console.log('Sign up server error: ');
-                    reject(Error('find user sign up error: ' + error))
+                    console.log('Sign up server error: ' + error);
+                    reject(Error('sign up server error: ' + error))
                 });
         })
     },
