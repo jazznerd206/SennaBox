@@ -1,0 +1,16 @@
+.box-wrapper {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+
+.container {
+    border: 1px solid chartreuse;
+    margin: 2em auto;
+    min-width: 60vw;
+    height: 10em;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}

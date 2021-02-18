@@ -41,7 +41,10 @@ function Dashboard() {
                     {user.Boxes.map(box => (
                         <Box 
                             key={box.id}
-                            name={box.boxName} 
+                            name={box.boxName}
+                            plantType={box.plantType}
+                            lastWatered={box.lastWatered}
+                            birth={box.createdAt}
                         />
                     ))}
                 </div>
@@ -51,7 +54,10 @@ function Dashboard() {
 }
 
 Dashboard.propTypes = {
-    name: PropTypes.string
+    name: PropTypes.string,
+    plantType: PropTypes.string,
+    lastWatered: PropTypes.string,
+    birth: PropTypes.string
 };
 
 export default Dashboard;
