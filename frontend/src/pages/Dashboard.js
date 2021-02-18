@@ -1,10 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { useHistory, Redirect } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 import { userAtom } from '../utils/UserAtom.js';
 import Cookies from 'js-cookie';
 import CreateBox from '../components/CreateBox/CreateBox';
-import { useHistory, Redirect } from 'react-router-dom';
-
+import Box from '../components/Box/Box';
 
 function Dashboard() {
 
@@ -18,25 +19,39 @@ function Dashboard() {
         history.push('/');
     }
 
-    if (user.Boxes) {
-        console.log('user.Boxes.length', user.Boxes.length)
-    }
-
-    if (!user.id) {
-        console.log('redirect')
+    if (!user.username) {
+        // console.log('redirect')
         return <Redirect to="/" />
     }
+    
     return (
         <div className="dashboard-wrapper">
             <div className="row dashboard-header">
-                <h1>Welcome {user.username}</h1>
+                <h1>SENNABOX</h1>
+                <h1>{user.username}{user.Boxes[0].boxName}</h1>
                 <button onClick={() => logout()}>Logout</button>
             </div>
-            <div className="row vertical-align">
-                <CreateBox />
-            </div>
+            {user.Boxes.length === 0 && (
+                <div className="row vertical-align">
+                    <CreateBox />
+                </div>
+            )}
+            {user.Boxes.length > 0 && (
+                <div className="row vertical-align">
+                    {user.Boxes.map(box => (
+                        <Box 
+                            key={box.id}
+                            name={box.boxName} 
+                        />
+                    ))}
+                </div>
+            )}
         </div>
     )
 }
+
+Dashboard.propTypes = {
+    name: PropTypes.string
+};
 
 export default Dashboard;

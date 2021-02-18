@@ -3,19 +3,19 @@ import axios from 'axios';
 
 export default {
     registerUser: userObj => {
-        console.log('axios post create user')
-        console.log('userObj', userObj)
+        // console.log('axios post create user')
+        // console.log('userObj', userObj)
         return new Promise ((resolve, reject) => {
             axios.post("/api/user", userObj)
                 .then(response => {
                     if (response) {
-                        console.log('user response from register ', response.data);
+                        // console.log('user response from register ', response.data);
                         resolve(response.data);
                     } else {
                         console.log('Sign-up error');
                     }
                 }).catch(error => {
-                    console.log('Sign up server error: ' + error);
+                    // console.log('Sign up server error: ' + error);
                     reject(Error('sign up server error: ' + error))
                 });
         })
@@ -27,7 +27,7 @@ export default {
             axios.post("/api/user/login", userObj)
                 .then(response => {
                     if (response) {
-                        console.log('user response from login ', response.data);
+                        // console.log('user response from login ', response.data);
                         resolve(response.data);
                     } else {
                         console.log('Login error');
@@ -38,7 +38,7 @@ export default {
         })
     },
     findAll: () => {
-        console.log('axios get find all route')
+        // console.log('axios get find all route')
         return new Promise((resolve, reject) => {
             axios.get(`/api/user`)
                 .then(response => {
@@ -56,7 +56,7 @@ export default {
         })
     },
     findOne: (id) => {
-    console.log('axios get find all route')
+    // console.log('axios get find all route')
     return new Promise((resolve, reject) => {
         axios.get(`/api/user/${id}`)
             .then(response => {
@@ -74,7 +74,7 @@ export default {
         })
     },
     create: (type, obj) => {
-        console.log('obj', obj)
+        // console.log('obj', obj)
         return new Promise ((resolve, reject) => {
             axios.post(`/api/${type}`, obj)
                 .then(response => {

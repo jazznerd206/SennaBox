@@ -4,19 +4,32 @@ const models = require('../models'); // loads index.js
 module.exports = {
     findAll: (req, res) => {
         console.log('box find all route')
-        let randNum = (Math.random() * 100).toFixed(2);
-        res.send(randNum);
+        models.Box.findAll().then(box => {
+                console.log("find all")
+                res.send(box);
+            })
+            .catch(err => {
+                console.log("find all")
+                const response = {
+                    status: 500,
+                    message:
+                    err.message || 'Some error occurred while retrieving box'
+                }
+                res.json(response);
+        });
     },
     create: async (req, res) => {
         console.log('box create route ', req.body)
-        // let newBox = await models.Box.create(req.body);
         const { boxName, plantType, userId } = req.body;
         const newBox = {
             boxName: boxName,
             plantType: plantType,
-            userId: userId
+            UserId: userId
         }
         console.log('newBox', newBox)
+        let create = await models.Box.create(newBox);
+        // console.log(create)
+        res.send(create)
     },
     read: (req, res) => {
         console.log('read')

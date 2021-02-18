@@ -11,11 +11,11 @@ module.exports = {
                   }]
                 })
         .then(users => {
-                console.log("find all")
+                // console.log("find all")
                 res.send(users);
               })
             .catch(err => {
-                console.log("find all")
+                // console.log("find all")
                 const response = {
                     status: 500,
                     message:
@@ -35,7 +35,7 @@ module.exports = {
                   }]
                 })
         .then(user => {
-            console.log('user', user)
+            // console.log('user', user)
             res.send(user)
         })
         .catch(err => {
@@ -56,7 +56,7 @@ module.exports = {
         }
         let hash = bcrypt.hashSync(req.body.password, 10);
         let findUser = await models.User.findOne( { where: { username: req.body.username }})
-        console.log('find', findUser)
+        // console.log('find', findUser)
         if (findUser) {
             res.json({
                 status: 400,
@@ -69,7 +69,7 @@ module.exports = {
         );
         // data will be an object with the user and it's authToken
         // let data = user.authenticate();
-        console.log('user', userHash)
+        // console.log('user', userHash)
         // send back the new user and auth token to the
         // client { user, authToken }
         // console.log('data', data)
@@ -107,8 +107,8 @@ module.exports = {
             return res.json(response);
         }
 
-        console.log('username', username)
-        console.log('password', password)
+        // console.log('username', username)
+        // console.log('password', password)
 
         try {
             let user = await models.User.authenticate(username, password)
@@ -116,7 +116,7 @@ module.exports = {
             return res.json(user);
 
         } catch (err) {
-            console.log('invalid username or password')
+            // console.log('invalid username or password')
             const response = {
                 status: 400,
                 message: 'Invalid username or password'

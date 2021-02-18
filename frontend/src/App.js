@@ -2,10 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { userAtom } from './utils/UserAtom.js'
 import API from './utils/API.js'
-// import { userAtom, select    UserAtom } from './utils/UserAtom';
 import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
-// import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 import { Route, Switch, useHistory } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import './App.css';
@@ -28,7 +26,7 @@ function App() {
             let [ id, authToken ] = result.split(':')
             console.log(id, authToken);
             let userFromCookie = await API.findOne(id);
-            console.log('userFromCookie', userFromCookie)
+            // console.log('userFromCookie', userFromCookie)
             setLoading(false);
             setUser(userFromCookie);
             history.push('/dashboard');

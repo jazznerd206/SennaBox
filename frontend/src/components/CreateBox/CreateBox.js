@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import API from '../../utils/API';
 import { useRecoilValue } from 'recoil';
 import { userAtom } from '../../utils/UserAtom.js';
 
 function CreateBox() {
 
+    const history = useHistory();
     const user = useRecoilValue(userAtom)
     const [ boxName, setBoxName ] = useState('');
     const [ plantType, setPlantType ] = useState('');
@@ -18,6 +20,9 @@ function CreateBox() {
         }
         let freshie = API.create('box', newBox);
         console.log('freshie', freshie);
+        setBoxName('');
+        setPlantType('');
+        history.push('/dashboard');
     }
 
     return (
