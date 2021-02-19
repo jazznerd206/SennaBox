@@ -8,7 +8,7 @@
 <p>Build your own garden. SennaBox is a no spill, self watering planter box. Plants in the SennaBox take water and nutrients as they need, just keep the reservoir filled and watch your plants thrive. Not all plants are created equally, so SennaBox can create indiviudual watering schedules for each plant. Bring home living remembrances of your travels, the parts of the world 🌎 that you have conquered.</p>
 
 <p align="center">
-  <img src="./server/public/images/SennaBox.png" height="400px" width="400px"></img>
+  <img src="./server/public/images/SennaBox.png" height="400px" width="auto"></img>
 <p>
 
 <div>
