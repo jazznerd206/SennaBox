@@ -28,7 +28,7 @@ function Dashboard() {
         <div className="dashboard-wrapper">
             <div className="row dashboard-header">
                 <h1>SENNABOX</h1>
-                <h1>{user.username}{user.Boxes[0].boxName}</h1>
+                <h1>{user.username}</h1>
                 <button onClick={() => logout()}>Logout</button>
             </div>
             {user.Boxes.length === 0 && (

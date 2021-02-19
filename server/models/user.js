@@ -36,7 +36,7 @@ module.exports = (sequelize, DataTypes) => {
                   }]
                 });
       let compare = bcrypt.compareSync(password, user.password)
-      console.log('bcrypt.compareSync(password, user.password)', compare)
+      // console.log('bcrypt.compareSync(password, user.password)', compare)
       if (compare) {
         return user.authorize();
       }

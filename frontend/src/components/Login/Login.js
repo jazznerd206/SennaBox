@@ -156,7 +156,7 @@ function Login() {
                         id="password"
                         onChange={(e) => setPassword(e.target.value)}
                     ></input>
-                    <label>Check Password:</label>
+                    <label>Retype Password:</label>
                     <input
                         type="password"
                         value={checkPassword}
