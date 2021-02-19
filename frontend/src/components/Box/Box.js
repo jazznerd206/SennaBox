@@ -36,20 +36,20 @@ function Box(props) {
         <div>
             <div className="box-wrapper">
                 <div className="container">
-                    <p>Box Name</p>
-                    <span>{props.name}</span>
+                    {/* <p>Box Name:</p> */}
+                    <h1>{props.name}</h1>
                 </div>
                 <div className="container">
                     <p>Plant Type:</p>
-                    <span>{props.plantType}</span>
+                    <p>{props.plantType}</p>
                 </div>
                 <div className="container">
                     <p>Last watered:</p>
-                    <span>{props.lastWatered}</span>
+                    <p>{props.lastWatered}</p>
                 </div>
                 <div className="container">
                     <p>Age:</p>
-                    <span>{getAge()}</span>
+                    <p>{getAge()}</p>
                 </div>
             </div>
         </div>
