@@ -15,11 +15,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // serve static files (js, css, images)
-app.use(express.static(__dirname + '/public'));
+// app.use(express.static(__dirname + '../frontend/dir'));
 
-// app.get('*', (req, res) => {
-//   res.sendFile(path.join(__dirname, "../frontend/src/index.html"));
+// app.get('/', (req, res) => {
+//   res.sendFile(path.join(__dirname, "../frontend/dir/index.html"));
 // });
+
+// /Users/miller/Documents/Projects/SennaBox/frontend/dir/index.html
 
 // use the cookie-parser to help with auth token, 
 // it must come before the customAuthMiddleware

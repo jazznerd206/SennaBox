@@ -1,7 +1,7 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-    "mode": "development",
+    // "mode": "development",
     "entry": "./src/index.js",
     "output": {
         "path": __dirname + '/dir',
@@ -11,17 +11,17 @@ module.exports = {
     "devServer": {
         hot: true,
         historyApiFallback: true,
-        port: 3000,
+        port: 8081,
         proxy: {
             "/api": "http://localhost:8080",
-            "/api/user": "http://localhost:8080",
+            // "/api/user": "http://localhost:8080",
     }
     },
     "module": {
         "rules": [
             {
                 "enforce": "pre",
-                "test": /\.js$/,
+                "test": /\.js$/, 
                 "exclude": /node_modules/,
                 "loader": "eslint-loader",
                 "options": {

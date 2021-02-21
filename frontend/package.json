@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
-    "start": "npx webpack serve --mode development --open --hot"
+    "start": "npx webpack serve --mode production --open --hot"
   },
   "proxy": "http://localhost:8080",
   "keywords": [],

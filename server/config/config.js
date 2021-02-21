@@ -1,11 +1,11 @@
 require('dotenv').config();
 
 // console.log(process.env.MYSQL_PW)
-console.log('+++++++++++++++++++++++++');
-console.log(process.env.DB_USERNAME);
-console.log(process.env.DB_PASSWORD);
-console.log(process.env.DB_NAME);
-console.log('+++++++++++++++++++++++++');
+// console.log('+++++++++++++++++++++++++');
+// console.log(process.env.DB_USERNAME);
+// console.log(process.env.DB_PASSWORD);
+// console.log(process.env.DB_NAME);
+// console.log('+++++++++++++++++++++++++');
 
 module.exports = {
     "development": {
